@@ -14,7 +14,7 @@ namespace JamSys.NeuralNetwork.Tests
         }
 
         [Fact]
-        public void GateTraining()
+        public void XorGateTraining()
         {
 
             var network = Factory.Instance.CreateNetwork()
@@ -23,12 +23,12 @@ namespace JamSys.NeuralNetwork.Tests
                 .AddDenseLayer(1, ActivationFunctionEnum.Sigmoid)
                 .Build();
 
-            //NAND Gate
-            var ds = Factory.Instance.CreateDataSet();
-            ds.Add(new Tensor(2) { [0] = 1, [1] = 1 }, new Tensor(1) { [0] = 0 });
-            ds.Add(new Tensor(2) { [0] = 1, [1] = 0 }, new Tensor(1) { [0] = 1 });
-            ds.Add(new Tensor(2) { [0] = 0, [1] = 1 }, new Tensor(1) { [0] = 1 });
-            ds.Add(new Tensor(2) { [0] = 0, [1] = 0 }, new Tensor(1) { [0] = 0 });
+            //XOR Gate
+            var ds = Factory.Instance.CreateDataSet()
+                    .Add(new Tensor(2) { [0] = 1, [1] = 1 }, new Tensor(1) { [0] = 0 })
+                    .Add(new Tensor(2) { [0] = 1, [1] = 0 }, new Tensor(1) { [0] = 1 })
+                    .Add(new Tensor(2) { [0] = 0, [1] = 1 }, new Tensor(1) { [0] = 1 })
+                    .Add(new Tensor(2) { [0] = 0, [1] = 0 }, new Tensor(1) { [0] = 0 });
 
             var trainer = Factory.Instance.CreateTrainer()
                 .Configure(c =>
@@ -40,7 +40,6 @@ namespace JamSys.NeuralNetwork.Tests
             trainer.Train(network, ds, 50000);
 
             //Validation
-
             double totalError = trainer.Validate(network, ds);
             console.WriteLine($"Total Error: {totalError}");
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamSys.NeuralNetwork
+namespace JamSys.NeuralNetwork.Training
 {
     public interface ITrainerConfig
     {

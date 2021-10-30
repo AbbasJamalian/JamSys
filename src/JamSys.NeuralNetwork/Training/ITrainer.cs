@@ -2,7 +2,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace JamSys.NeuralNetwork
+namespace JamSys.NeuralNetwork.Training
 {
     public interface ITrainer : IDisposable
     {

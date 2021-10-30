@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamSys.NeuralNetwork
+namespace JamSys.NeuralNetwork.DataSet
 {
     public interface IDataSetProvider : IDisposable
     {
@@ -12,7 +12,7 @@ namespace JamSys.NeuralNetwork
 
         public (Tensor data, Tensor label) this[int x] { get; }
 
-        void Add(Tensor data, Tensor label);
+        IDataSetProvider Add(Tensor data, Tensor label);
 
         void Clear();
 

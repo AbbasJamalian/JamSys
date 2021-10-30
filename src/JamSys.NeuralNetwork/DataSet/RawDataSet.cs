@@ -24,10 +24,11 @@ namespace JamSys.NeuralNetwork.DataSet
             Labels = new List<Tensor>();
         }
 
-        public void Add(Tensor data, Tensor label)
+        public IDataSetProvider Add(Tensor data, Tensor label)
         {
             Data.Add(data);
             Labels.Add(label);
+            return this;
         }
 
         public void Clear()
