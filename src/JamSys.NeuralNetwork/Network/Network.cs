@@ -60,17 +60,13 @@ namespace JamSys.NeuralNetwork.Network
 
         public string Save()
         {
-            string result = null;
-
             JsonSerializerOptions options = new()
             {
                 WriteIndented = true,
                 Converters = { new LayerSerializer() },
             };
 
-            result = JsonSerializer.Serialize(this, options);
-
-            return result;
+            return JsonSerializer.Serialize(this, options);
         }
 
         public INetwork Load(string jsonValue)

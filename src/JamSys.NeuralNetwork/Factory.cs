@@ -30,7 +30,7 @@ namespace JamSys.NeuralNetwork
             }
         }
 
-        private List<FactoryEntry> _registeredTypes = new List<FactoryEntry>();
+        private readonly List<FactoryEntry> _registeredTypes = new();
 
         public static Factory Instance 
         { 

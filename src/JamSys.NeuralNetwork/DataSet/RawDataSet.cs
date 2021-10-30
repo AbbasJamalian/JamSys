@@ -60,7 +60,7 @@ namespace JamSys.NeuralNetwork.DataSet
 
         public virtual void Shuffle()
         {
-            Random random = new Random();
+            Random random = new();
             for (var i = Size - 1; i >= 0; i--)
             {
                 var j = random.Next(i);

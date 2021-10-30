@@ -6,7 +6,7 @@ namespace JamSys.NeuralNetwork.Initializers
 {
     class RandomInitializer : IInitializer
     {
-        private Random random;
+        private readonly Random random;
         public RandomInitializer()
         {
             random = new Random();

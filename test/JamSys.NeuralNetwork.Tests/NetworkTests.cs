@@ -14,6 +14,34 @@ namespace JamSys.NeuralNetwork.Tests
         }
 
         [Fact]
+        public void SaveAndLoadTest()
+        {
+            var network = Factory.Instance.CreateNetwork()
+                .AddInputLayer(2)
+                .AddDenseLayer(4, ActivationFunctionEnum.LeakyReLU)
+                .AddDenseLayer(2, ActivationFunctionEnum.LeakyReLU)
+                .AddSoftmaxLayer(2)
+                .Build();
+
+            Tensor input = new Tensor(2);
+
+            input[0] = 1;
+            input[1] = 2;
+
+            var output = network.Run(input);
+
+            string saveResult = network.Save();
+
+            var net2 = Factory.Instance.CreateNetwork()
+                .Load(saveResult);
+
+            var out2 = net2.Run(input);
+
+            Assert.Equal(0, string.Compare(output.ToString(), out2.ToString()));
+
+        }
+
+        [Fact]
         public void XorGateTraining()
         {
 
