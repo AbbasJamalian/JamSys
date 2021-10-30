@@ -10,7 +10,7 @@ namespace JamSys.NeuralNetwork.Layers
     public class InputLayer : ILayer
     {
         [JsonIgnore]
-        public Tensor Input { get; private set; }
+        public Tensor Input { get; set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }
@@ -56,7 +56,6 @@ namespace JamSys.NeuralNetwork.Layers
 
         public void Run()
         {
-            //TODO: Check if Input matches the initialized dimensions
             Output = Input;
         }
 

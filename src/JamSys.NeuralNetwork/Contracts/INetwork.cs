@@ -8,9 +8,6 @@ namespace JamSys.NeuralNetwork
     public interface INetwork : IDisposable
     {
         [JsonIgnore]
-        public Tensor Input { get; }
-
-        [JsonIgnore]
         public Tensor Output { get; }
 
         public List<ILayer> Layers { get; set; }

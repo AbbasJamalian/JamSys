@@ -10,7 +10,7 @@ namespace JamSys.NeuralNetwork.Layers
     public interface ILayer : IDisposable
     {
         [JsonIgnore]
-        public Tensor Input { get; }
+        public Tensor Input { get; set; }
 
         [JsonIgnore]
         public Tensor Output { get; }

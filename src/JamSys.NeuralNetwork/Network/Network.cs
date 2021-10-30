@@ -11,10 +11,10 @@ namespace JamSys.NeuralNetwork.Network
         public List<ILayer> Layers { get; set; }
 
         [JsonIgnore]
-        public Tensor Input { get { return Layers?[0]?.Input; } }
+        private Tensor _input;
 
         [JsonIgnore]
-        public Tensor Output { get { return Layers?[Layers.Count - 1]?.Output; } }
+        public Tensor Output { get { return Layers?[^1]?.Output; } }
 
         public Network()
         {
@@ -55,6 +55,7 @@ namespace JamSys.NeuralNetwork.Network
                 layer.Build(previousLayer);
                 previousLayer = layer;
             }
+            _input = Layers?[0]?.Input;
             return this;
         }
 
@@ -102,10 +103,10 @@ namespace JamSys.NeuralNetwork.Network
                 if (input == null || !input.HasValues)
                     throw new ArgumentException("Input may not be null or without values");
 
-                if(input.Width != Input.Width || input.Depth != Input.Depth || input.Height != Input.Height)
+                if(input.Width != _input.Width || input.Depth != _input.Depth || input.Height != _input.Height)
                     throw new ArgumentException("Input must match the network's input");
 
-                Input.Copy(input);
+                Layers[0].Input.Copy(input);
                 Layers.ForEach(l => l.Run());
                 return Output;
             }

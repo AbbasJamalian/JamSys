@@ -11,7 +11,7 @@ namespace JamSys.NeuralNetwork.Layers
     {
 
         [JsonIgnore]
-        public Tensor Input { get; private set; }
+        public Tensor Input { get; set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }

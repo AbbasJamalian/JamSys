@@ -10,7 +10,7 @@ namespace JamSys.NeuralNetwork.Layers
         public List<Neuron> Neurons { get; set; }
 
         [JsonIgnore]
-        public Tensor Input { get; private set; }
+        public Tensor Input { get; set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }
