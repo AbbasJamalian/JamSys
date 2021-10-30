@@ -1,4 +1,5 @@
 ﻿using JamSys.NeuralNetwork.ActivationFunctions;
+using JamSys.NeuralNetwork.DataSet;
 using JamSys.NeuralNetwork.Initializers;
 using JamSys.NeuralNetwork.LossFunctions;
 using JamSys.NeuralNetwork.Training;
@@ -44,7 +45,9 @@ namespace JamSys.NeuralNetwork
         private Factory()
         {
             Register<INetwork>(typeof(Network.Network));
+            Register<IDataSetProvider>(typeof(RawDataSet));
             Register<IInitializer>(typeof(RandomInitializer), true);
+
 
             RegisterNamed<IActivationFunction>(typeof(LinearActivation), Enum.GetName(ActivationFunctionEnum.Linear));
             RegisterNamed<IActivationFunction>(typeof(SigmoidActivation), Enum.GetName(ActivationFunctionEnum.Sigmoid));
@@ -56,6 +59,7 @@ namespace JamSys.NeuralNetwork
             RegisterNamed<ILossFunction>(typeof(CrossEntropyLoss), Enum.GetName(LossFunctionEnum.CrossEntropy));
 
             RegisterNamed<ITrainer>(typeof(SGDTrainer), Enum.GetName(TrainerEnum.SGDTrainer));
+
         }
 
         public INetwork CreateNetwork()
@@ -63,9 +67,14 @@ namespace JamSys.NeuralNetwork
             return Resolve<INetwork>();
         }
 
-        public ITrainer CreateTrainer(TrainerEnum trainer)
+        public ITrainer CreateTrainer()
         {
-            return ResolveNamed<ITrainer>(Enum.GetName(trainer));
+            return ResolveNamed<ITrainer>(TrainerEnum.SGDTrainer);
+        }
+
+        public IDataSetProvider CreateDataSet()
+        {
+            return Resolve<IDataSetProvider>();
         }
 
         public void Register<T>(Type implementingType, bool singleton = false)

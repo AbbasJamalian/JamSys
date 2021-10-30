@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamSys.NeuralNetwork.DataSet
+namespace JamSys.NeuralNetwork
 {
     public interface IDataSetProvider : IDisposable
     {

@@ -1,5 +1,7 @@
 ﻿using JamSys.NeuralNetwork.DataSet;
 using JamSys.NeuralNetwork.LossFunctions;
+using System;
+using System.Linq.Expressions;
 
 namespace JamSys.NeuralNetwork.Training
 {
@@ -14,13 +16,13 @@ namespace JamSys.NeuralNetwork.Training
         }
 
 
-        public ITrainer Initialize(int batchSize, double learningRate, LossFunctionEnum lossFunction)
+        public void Initialize(int batchSize, double learningRate, LossFunctionEnum lossFunction)
         {
             _batchSize = batchSize;
             _learningRate = learningRate;
             _lossFunction = Factory.Instance.ResolveNamed<ILossFunction>(lossFunction);
 
-            return this;
+            return;
         }
 
         public void Dispose()
@@ -70,6 +72,18 @@ namespace JamSys.NeuralNetwork.Training
             totalError /= dataSet.Size;
 
             return totalError;
+        }
+
+        public ITrainer Configure(Action<ITrainerConfig> config)
+        {
+            ITrainerConfig trainerConfig = new SGDTrainerConfig();
+            config.Invoke(trainerConfig);
+
+            _batchSize = trainerConfig.BatchSize;
+            _learningRate = trainerConfig.LearningRate;
+            _lossFunction = Factory.Instance.ResolveNamed<ILossFunction>(trainerConfig.LossFunction);
+
+            return this;
         }
     }
 }
