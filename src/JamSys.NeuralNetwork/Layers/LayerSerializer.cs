@@ -57,17 +57,18 @@ namespace JamSys.NeuralNetwork.Layers
             writer.WriteStartObject();
             writer.WriteString("Type", value.GetType().Name);
             writer.WritePropertyName("Layer");
-            if (value is InputLayer)
+
+            switch (value)
             {
-                JsonSerializer.Serialize<InputLayer>(writer, (InputLayer) value, options);
-            }
-            else if (value is DenseLayer)
-            {
-                JsonSerializer.Serialize<DenseLayer>(writer, (DenseLayer) value, options);
-            }
-            else if (value is SoftmaxLayer)
-            {
-                JsonSerializer.Serialize<SoftmaxLayer>(writer, (SoftmaxLayer)value, options);
+                case InputLayer layer:
+                    JsonSerializer.Serialize<InputLayer>(writer, layer, options);
+                    break;
+                case DenseLayer layer:
+                    JsonSerializer.Serialize<DenseLayer>(writer, layer, options);
+                    break;
+                case SoftmaxLayer layer:
+                    JsonSerializer.Serialize<SoftmaxLayer>(writer, layer, options);
+                    break;
             }
             writer.WriteEndObject();
         }
