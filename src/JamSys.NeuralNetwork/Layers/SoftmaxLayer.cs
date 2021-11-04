@@ -54,15 +54,6 @@ namespace JamSys.NeuralNetwork.Layers
             }
         }
 
-        public void Dispose()
-        {
-            if (Output != null)
-            {
-                Output.Dispose();
-                Output = null;
-            }
-        }
-
         public void Clear()
         {
             Output?.Clear();

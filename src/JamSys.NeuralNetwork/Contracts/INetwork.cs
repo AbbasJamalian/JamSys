@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace JamSys.NeuralNetwork
 {
-    public interface INetwork : IDisposable
+    public interface INetwork
     {
         [JsonIgnore]
         public Tensor Output { get; }

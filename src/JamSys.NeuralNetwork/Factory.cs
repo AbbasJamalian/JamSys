@@ -112,7 +112,7 @@ namespace JamSys.NeuralNetwork
 
             var entry = query.FirstOrDefault();
 
-            if (entry.Implementation != null)
+            if (entry?.Implementation != null)
             {
                 T instance;
                 if (entry.Singleton)

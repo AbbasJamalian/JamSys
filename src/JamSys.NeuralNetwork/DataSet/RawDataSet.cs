@@ -39,20 +39,6 @@ namespace JamSys.NeuralNetwork.DataSet
             Labels.Clear();
         }
 
-        public void Dispose()
-        {
-            if (Data != null)
-            {
-                Data.ForEach(d => d.Dispose());
-                Labels.ForEach(l => l.Dispose());
-
-                Data.Clear();
-                Data = null;
-                Labels.Clear();
-                Labels = null;
-            }
-        }
-
         public virtual (Tensor data, Tensor label) GetData(int index)
         {
             return new(Data[index], Labels[index]);

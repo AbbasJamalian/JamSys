@@ -10,7 +10,7 @@ namespace JamSys.NeuralNetwork.Layers
     public class InputLayer : ILayer
     {
         [JsonIgnore]
-        public Tensor Input { get; set; }
+        public Tensor Input { get;  set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }
@@ -24,22 +24,6 @@ namespace JamSys.NeuralNetwork.Layers
             Width = width;
             Depth = depth;
             Height = height;
-        }
-
-        public void Dispose()
-        {
-            if (Output != null)
-            {
-                Output.Dispose();
-                Output = null;
-            }
-
-            //Because the Input Layer is the owner of input
-            if (Input != null)
-            {
-                Input.Dispose();
-                Input = null;
-            }
         }
 
         public void Build(ILayer previousLayer)
@@ -56,6 +40,7 @@ namespace JamSys.NeuralNetwork.Layers
 
         public void Run()
         {
+            //TODO: Check if Input matches the initialized dimensions
             Output = Input;
         }
 

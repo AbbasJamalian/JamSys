@@ -78,15 +78,6 @@ namespace JamSys.NeuralNetwork.Nodes
 
         }
 
-        public void Dispose()
-        {
-            if (Weights != null)
-            {
-                Weights.Dispose();
-                Weights = null;
-            }
-        }
-
         public void Run()
         {
             _output[Index] = _activationFunction.Calculate(GetDotProduct());

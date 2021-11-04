@@ -25,10 +25,6 @@ namespace JamSys.NeuralNetwork.Training
             return;
         }
 
-        public void Dispose()
-        {
-        }
-
         public void Train(INetwork network, IDataSetProvider dataSet, int epoches)
         {
             //TODO: Check Input and Output sizes with the dataset data and label sizes
@@ -53,7 +49,6 @@ namespace JamSys.NeuralNetwork.Training
                         delta[x] = (delta[x] / _batchSize);
 
                     network.Backpropagate(delta, _learningRate);
-                    delta.Dispose();
                 }
             }
         }

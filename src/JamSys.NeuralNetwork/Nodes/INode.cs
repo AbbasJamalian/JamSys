@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.Nodes
 {
-    public interface INode : IDisposable
+    public interface INode
     {
         void Run();
 

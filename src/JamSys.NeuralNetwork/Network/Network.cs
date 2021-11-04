@@ -85,17 +85,6 @@ namespace JamSys.NeuralNetwork.Network
             return this;
         }
 
-
-        public void Dispose()
-        {
-            if (Layers != null)
-            {
-                Layers.ForEach(l => l.Dispose());
-                Layers.Clear();
-                Layers = null;
-            }
-        }
-
         public Tensor Run(Tensor input)
         {
             if (Layers.Count > 1)

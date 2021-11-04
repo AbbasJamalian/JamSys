@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.Layers
 {
-    public interface ILayer : IDisposable
+    public interface ILayer
     {
         [JsonIgnore]
         public Tensor Input { get; set; }

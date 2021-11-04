@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace JamSys.NeuralNetwork.Training
 {
-    public interface ITrainer : IDisposable
+    public interface ITrainer
     {
         public ITrainer Configure(Action<ITrainerConfig> config);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.DataSet
 {
-    public interface IDataSetProvider : IDisposable
+    public interface IDataSetProvider
     {
         public int Size { get;  }
 

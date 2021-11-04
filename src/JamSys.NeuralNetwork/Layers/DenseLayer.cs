@@ -49,22 +49,6 @@ namespace JamSys.NeuralNetwork.Layers
             //_neurons.ForEach(n => n.Run());
         }
 
-        public void Dispose()
-        {
-            if (Output != null)
-            {
-                Output.Dispose();
-                Output = null;
-            }
-
-            if (Neurons != null)
-            {
-                Neurons.ForEach(n => n.Dispose());
-                Neurons.Clear();
-                Neurons = null;
-            }
-        }
-
         public void Clear()
         {
             Output?.Clear();

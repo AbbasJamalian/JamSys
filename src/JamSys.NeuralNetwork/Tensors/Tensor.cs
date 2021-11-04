@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace JamSys.NeuralNetwork
 {
-    public class Tensor : IDisposable
+    public class Tensor
     {
         [JsonIgnore]
         public double[,,] Values { get; private set; }
@@ -98,11 +98,6 @@ namespace JamSys.NeuralNetwork
         {
             if (Values != null)
                 Values = null;
-        }
-
-        public void Dispose()
-        {
-            Clear();
         }
 
         public override string ToString()
