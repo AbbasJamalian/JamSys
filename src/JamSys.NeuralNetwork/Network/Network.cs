@@ -79,7 +79,8 @@ namespace JamSys.NeuralNetwork.Network
             };
 
             INetwork network = JsonSerializer.Deserialize(jsonValue, typeof(Network), options) as INetwork;
-            this.Layers = network.Layers;
+            network.Layers.ForEach(l => this.Layers.Add(l));
+            network.Layers.Clear();
             Build();
 
             return this;
