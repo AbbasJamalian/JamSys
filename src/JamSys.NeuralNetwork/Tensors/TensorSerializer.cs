@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.Tensors
 {
+    /// <summary>
+    /// Provides custome JSON serializer and deserializer for Tensors
+    /// </summary>
     public class TensorSerializer : JsonConverter<Tensor>
     {
         public override bool CanConvert(Type typeToConvert)
@@ -96,12 +103,10 @@ namespace JamSys.NeuralNetwork.Tensors
             {
                 for (int y = 0; y < value.Height; y++)
                 {
-                    //writer.WriteStartArray();
                     for (int x = 0; x < value.Width; x++)
                     {
                         writer.WriteNumberValue(value[x, y, z]);
                     }
-                    //writer.WriteEndArray();
                 }
             }
             writer.WriteEndArray();

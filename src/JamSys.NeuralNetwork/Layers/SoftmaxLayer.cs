@@ -1,20 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+using System;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.Layers
 {
+    /// <summary>
+    /// Implementation of Softmax Layer
+    /// </summary>
     public class SoftmaxLayer : ILayer
     {
 
         [JsonIgnore]
-        public Tensor Input { get; set; }
+        public Tensor Input { get; private set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }
+
         public int OutputCount { get; private set; }
 
         public SoftmaxLayer(int outputCount)

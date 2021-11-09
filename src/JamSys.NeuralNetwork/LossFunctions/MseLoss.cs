@@ -1,7 +1,18 @@
-﻿using System;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+using System;
 
 namespace JamSys.NeuralNetwork.LossFunctions
 {
+    /// <summary>
+    /// Implementation of the Mean squared error loss function
+    /// </summary>
     public class MseLoss : ILossFunction
     {
         public Tensor CalculateGradients(Tensor networkOutput, Tensor expectedOutput)
@@ -18,7 +29,6 @@ namespace JamSys.NeuralNetwork.LossFunctions
 
         public double CalculateTotalLoss(Tensor networkOutput, Tensor expectedOutput)
         {
-            //TODO: Check Tensors are single dimentional
             double error = 0;
 
             for (int i = 0; i < networkOutput.Width; i++)

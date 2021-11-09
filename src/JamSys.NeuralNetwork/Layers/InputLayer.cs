@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.Layers
 {
     public class InputLayer : ILayer
     {
         [JsonIgnore]
-        public Tensor Input { get;  set; }
+        public Tensor Input { get;  private set; }
 
         [JsonIgnore]
         public Tensor Output { get; private set; }
@@ -26,6 +29,10 @@ namespace JamSys.NeuralNetwork.Layers
             Height = height;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="previousLayer">Input Layer ignores this parameter. it can be null.</param>
         public void Build(ILayer previousLayer)
         {
             Input = new Tensor(Width, Height, Depth);
@@ -40,7 +47,6 @@ namespace JamSys.NeuralNetwork.Layers
 
         public void Run()
         {
-            //TODO: Check if Input matches the initialized dimensions
             Output = Input;
         }
 

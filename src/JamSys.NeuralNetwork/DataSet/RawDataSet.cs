@@ -1,11 +1,20 @@
-﻿using System;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JamSys.NeuralNetwork.DataSet
 {
+
+    /// <summary>
+    /// The basic implementation of the IDataSetProvider which works with raw Tensors as data and label. 
+    /// </summary>
     public class RawDataSet : IDataSetProvider
     {
         protected List<Tensor> Data;

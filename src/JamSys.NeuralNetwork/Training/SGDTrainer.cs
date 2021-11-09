@@ -1,10 +1,20 @@
-﻿using JamSys.NeuralNetwork.DataSet;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+using JamSys.NeuralNetwork.DataSet;
 using JamSys.NeuralNetwork.LossFunctions;
 using System;
-using System.Linq.Expressions;
 
 namespace JamSys.NeuralNetwork.Training
 {
+    /// <summary>
+    /// Gradient Decent trainer with parameters to set the batch size, loss function and learning rate
+    /// </summary>
     public class SGDTrainer : ITrainer
     {
         private int _batchSize;
@@ -13,16 +23,6 @@ namespace JamSys.NeuralNetwork.Training
 
         public SGDTrainer()
         {
-        }
-
-
-        public void Initialize(int batchSize, double learningRate, LossFunctionEnum lossFunction)
-        {
-            _batchSize = batchSize;
-            _learningRate = learningRate;
-            _lossFunction = Factory.Instance.ResolveNamed<ILossFunction>(lossFunction);
-
-            return;
         }
 
         public void Train(INetwork network, IDataSetProvider dataSet, int epoches)

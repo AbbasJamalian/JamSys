@@ -1,4 +1,13 @@
-﻿using JamSys.NeuralNetwork.Layers;
+﻿#region License
+/*
+ * Copyright (c) 2020 - Abbas Jamalian
+ * This file is part of JamSys Project and is licensed under the MIT License. 
+ * For more details see the License file provided with the software
+ */
+#endregion License
+
+
+using JamSys.NeuralNetwork.Layers;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -78,7 +87,7 @@ namespace JamSys.NeuralNetwork.Network
                 Converters = { new LayerSerializer() },
             };
 
-            INetwork network = JsonSerializer.Deserialize(jsonValue, typeof(Network), options) as INetwork;
+            Network network = JsonSerializer.Deserialize(jsonValue, typeof(Network), options) as Network;
             network.Layers.ForEach(l => this.Layers.Add(l));
             network.Layers.Clear();
             Build();
